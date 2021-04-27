@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.exampleURI.com/Schema1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://www.exampleURI.com/Schema1">
+	<xs:element name="ApplicationSettings" type="s1:ApplicationSettings"/>
+	<xs:complexType name="ApplicationSettings">
+		<xs:annotation>
+			<xs:documentation>Settings of the Application</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Calendar" type="s1:CalendarProperties" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CalendarProperties" type="s1:CalendarProperties"/>
+	<xs:complexType name="CalendarProperties">
+		<xs:sequence/>
+		<xs:attribute name="ICalUrl" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>URL to access the calendar via iCal</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

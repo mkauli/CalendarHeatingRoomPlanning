@@ -1,0 +1,2 @@
+"asp razor client side update"
+"asp razor partial page update"
