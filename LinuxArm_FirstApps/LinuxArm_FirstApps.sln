@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\He
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstWebApp_Razor", "FirstWebApp_Razor\FirstWebApp_Razor.csproj", "{35C60785-8A5F-4A64-A814-5B78AA77B4E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTutorialUI", "RazorTutorial\RazorTutorialUI.csproj", "{168D3B08-11E8-4675-8ECB-AEFD2EA8C723}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorTutorialUI", "RazorTutorial\RazorTutorialUI.csproj", "{168D3B08-11E8-4675-8ECB-AEFD2EA8C723}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

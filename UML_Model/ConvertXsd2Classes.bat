@@ -1,3 +1,3 @@
 @echo off
 
-xsd Settings.xsd /c /out:.. /namespace:CalendarHeatingRoomPlanning
+xsd Settings.xsd /c /out:..\CalendarHeatingRoomPlanning\CalendarHeatingRoomPlanningUI\Models /namespace:CalendarHeatingRoomPlanning
