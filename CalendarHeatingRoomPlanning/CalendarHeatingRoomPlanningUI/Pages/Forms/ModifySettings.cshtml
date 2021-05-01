@@ -1,0 +1,11 @@
+﻿@page
+@model CalendarHeatingRoomPlanningUI.Pages.Forms.ModifySettingsModel
+@{
+    ViewData["Title"] = " Change Settings";
+}
+
+<h1>Calendar Settings</h1>
+<form method="post">
+    <input type="url" asp-for="Settings.Calendar.ICalUrl" placeholder="iCal URL"/>
+    <button type="submit">Submit</button>
+</form>
