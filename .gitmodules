@@ -1,0 +1,4 @@
+[submodule "ExternalLibs/ical.net"]
+	path = ExternalLibs/ical.net
+	url = https://github.com/rianjs/ical.net
+	branch = master

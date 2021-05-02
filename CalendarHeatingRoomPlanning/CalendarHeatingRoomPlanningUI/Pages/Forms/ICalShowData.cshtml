@@ -1,0 +1,28 @@
+﻿@page
+@model CalendarHeatingRoomPlanningUI.Pages.Forms.ICalShowDataModel
+@{
+    ViewData["Title"] = "Show iCal Data";
+}
+
+<h1>Calendar Data</h1>
+@{ int counter = 1; }
+<table style="width:100%">
+    <tbody>
+        <tr>
+            <td>#</td>
+            <td>Start</td>
+            <td>Stop</td>
+            <td>Text</td>
+        </tr>
+        @foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Model.Calendar.Children)
+        {
+            <tr>
+                <td>@counter</td>
+                <td>@cal.Start.ToString()</td>
+                <td>@cal.End.ToString()</td>
+                <td>@cal.Summary</td>
+            </tr>
+            counter++;
+        }
+    </tbody>
+</table>

@@ -8,4 +8,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExternalLibs\ical.net\src\Ical.Net\Ical.Net.csproj" />
+  </ItemGroup>
+
 </Project>
