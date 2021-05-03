@@ -8,7 +8,7 @@ using CalendarHeatingRoomPlanning;
 
 namespace CalendarHeatingRoomPlanningUI.Pages.Forms
 {
-    public class ICalShowDataModel : PageModel
+    public class ICalShowDataModel : PageModel, SettingsSubscriber
     {
         /// <summary>
         /// Destination of all calendar data read from the URL
@@ -24,11 +24,17 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
         public List<string> Data { get; set; }
 
         /// <summary>
+        /// URL to the calendar webcal site - will be updated by the SettingsManager via its publisher feature.
+        /// </summary>
+        private string _ical_url;
+
+        /// <summary>
         /// Constructor of the class - initialized properties.
         /// </summary>
         public ICalShowDataModel()
         {
             Data = new List<string>();
+            _ical_url = SettingsManager.Instance.Settings.Calendar.ICalUrl;
         }
 
         public void OnGet()
@@ -37,11 +43,10 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
             {
                 // load data from webcal URl
                 System.Net.WebClient client = new System.Net.WebClient();
-                string url = SettingsManager.Instance.Settings.Calendar.ICalUrl;
                 // validate url
-                if((url.Length > 0) && (url.ToLower().StartsWith("http")))
+                if((_ical_url.Length > 0) && (_ical_url.ToLower().StartsWith("http")))
                 {
-                    System.IO.Stream stream = client.OpenRead(url);
+                    System.IO.Stream stream = client.OpenRead(_ical_url);
                     // System.IO.FileStream stream = new System.IO.FileStream("C:\\Temp\\calendar.ics", System.IO.FileMode.Open, System.IO.FileAccess.Read);
                     System.IO.StreamReader reader = new System.IO.StreamReader(stream);
                     string iCalData = reader.ReadToEnd();
@@ -71,6 +76,15 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
             finally
             {
             }
+        }
+
+        /// <summary>
+        /// This operation will be called when the publisher notifies new setting data.
+        /// </summary>
+        /// <param name="publisher">Publisher that notifies the subscriber.</param>
+        public void Update(SettingsPublisher publisher)
+        {
+            _ical_url = SettingsManager.Instance.Settings.Calendar.ICalUrl;
         }
     }
 }
