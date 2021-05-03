@@ -19,21 +19,21 @@ namespace CalendarHeatingRoomPlanningUI
 	/// </summary>
 	public sealed class SettingsManager : SettingsPublisher 
 	{
-		/// <summary>
-		/// Used for lazy initialization
-		/// </summary>
-		private static readonly Lazy<SettingsManager>
-				lazy = new Lazy<SettingsManager>(() => new SettingsManager());
+        /// <summary>
+        /// Used for lazy initialization
+        /// </summary>
+        private static readonly Lazy<SettingsManager>
+                lazy = new Lazy<SettingsManager>(() => new SettingsManager());
 
-		/// <summary>
-		/// Used to access the singleton
-		/// </summary>
-		public static SettingsManager Instance { get { return lazy.Value; } }
+        /// <summary>
+        /// Used to access the singleton
+        /// </summary>
+        public static SettingsManager Instance { get { return lazy.Value; } }
 
-		/// <summary>
-		/// Filename of the file that stores the application settings.
-		/// </summary>
-		private const string SettingsFileName = "CalendarHeatinRoomPlaning.dat";
+        /// <summary>
+        /// Filename of the file that stores the application settings.
+        /// </summary>
+        private const string SettingsFileName = "CalendarHeatinRoomPlaning.dat";
 
 		/// <summary>
 		/// List of currently registered subscribers. At notify all these subscribers will be called via their Update() operation.
@@ -68,6 +68,8 @@ namespace CalendarHeatingRoomPlanningUI
 			_already_load = false;
 			Subscribers = new List<SettingsSubscriber>();
 			_settings = new ApplicationSettings();
+			_settings.Calendar = new CalendarProperties();
+			_settings.Calendar.ICalUrl = "";
 		}
 
 		~SettingsManager()

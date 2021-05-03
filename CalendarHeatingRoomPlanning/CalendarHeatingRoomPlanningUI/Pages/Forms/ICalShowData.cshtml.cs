@@ -34,7 +34,10 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
         public ICalShowDataModel()
         {
             Data = new List<string>();
-            _ical_url = SettingsManager.Instance.Settings.Calendar.ICalUrl;
+            SettingsManager sm = SettingsManager.Instance;
+            ApplicationSettings settings = sm.Settings;
+            CalendarProperties calprop = settings.Calendar;
+            _ical_url = calprop.ICalUrl;
         }
 
         public void OnGet()
