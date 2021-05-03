@@ -14,15 +14,18 @@
             <td>Stop</td>
             <td>Text</td>
         </tr>
-        @foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Model.Calendar.Children)
+        @if ((Model.Calendar != null) && (Model.Calendar.Children.Count > 0))
         {
-            <tr>
-                <td>@counter</td>
-                <td>@cal.Start.ToString()</td>
-                <td>@cal.End.ToString()</td>
-                <td>@cal.Summary</td>
-            </tr>
-            counter++;
+            @foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Model.Calendar.Children)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@cal.Start.ToString()</td>
+                    <td>@cal.End.ToString()</td>
+                    <td>@cal.Summary</td>
+                </tr>
+                counter++;
+            }
         }
     </tbody>
 </table>

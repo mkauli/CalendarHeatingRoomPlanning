@@ -33,32 +33,45 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
 
         public void OnGet()
         {
-            // load data from webcal URl
-            System.Net.WebClient client = new System.Net.WebClient();
-            System.IO.Stream stream = client.OpenRead("http://svlw.protonet.info/calendar.ics?calendar_token=dsV46e-DDXhsLPsrztzV&project_id=218");
-            // System.IO.FileStream stream = new System.IO.FileStream("C:\\Temp\\calendar.ics", System.IO.FileMode.Open, System.IO.FileAccess.Read);
-            System.IO.StreamReader reader = new System.IO.StreamReader(stream);
-            string iCalData = reader.ReadToEnd();
-            string iCalDataNoComments = "";
+            SettingsManager.Instance.Load();
 
-            // remove comment -> not processed by ical library
-            using (var iCalDataReader = new System.IO.StringReader(iCalData))
+            try
             {
-                for (string line = iCalDataReader.ReadLine(); line != null; line = iCalDataReader.ReadLine())
+                // load data from webcal URl
+                System.Net.WebClient client = new System.Net.WebClient();
+                string url = SettingsManager.Instance.Settings.Calendar.ICalUrl;
+                // validate url
+                if((url.Length > 0) && (url.ToLower().StartsWith("http")))
                 {
-                    if (line.Length == 0) continue;
-                    if (line[0] != '/')
+                    System.IO.Stream stream = client.OpenRead(url);
+                    // System.IO.FileStream stream = new System.IO.FileStream("C:\\Temp\\calendar.ics", System.IO.FileMode.Open, System.IO.FileAccess.Read);
+                    System.IO.StreamReader reader = new System.IO.StreamReader(stream);
+                    string iCalData = reader.ReadToEnd();
+                    string iCalDataNoComments = "";
+
+                    // remove comment -> not processed by ical library
+                    using (var iCalDataReader = new System.IO.StringReader(iCalData))
                     {
-                        iCalDataNoComments += line + System.Environment.NewLine;
+                        for (string line = iCalDataReader.ReadLine(); line != null; line = iCalDataReader.ReadLine())
+                        {
+                            if (line.Length == 0) continue;
+                            if (line[0] != '/')
+                            {
+                                iCalDataNoComments += line + System.Environment.NewLine;
+                            }
+                        }
+                    }
+                    // let parse data from ical calendar            
+                    Calendar = Ical.Net.Calendar.Load(iCalDataNoComments);
+
+                    foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Calendar.Children)
+                    {
+                        Data.Add("test");
                     }
                 }
             }
-            // let parse data from ical calendar            
-            Calendar = Ical.Net.Calendar.Load(iCalDataNoComments);
-
-            foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Calendar.Children)
+            finally
             {
-                Data.Add("test");
             }
         }
     }
