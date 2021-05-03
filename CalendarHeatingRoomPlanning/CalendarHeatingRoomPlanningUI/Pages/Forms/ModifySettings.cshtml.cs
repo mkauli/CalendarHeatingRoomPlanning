@@ -25,7 +25,6 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
 
         public void OnGet()
         {
-            SettingsManager.Instance.Load();
         }
 
         public IActionResult OnPost()

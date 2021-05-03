@@ -33,8 +33,6 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
 
         public void OnGet()
         {
-            SettingsManager.Instance.Load();
-
             try
             {
                 // load data from webcal URl

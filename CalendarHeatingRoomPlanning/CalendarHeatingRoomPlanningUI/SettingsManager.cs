@@ -43,11 +43,31 @@ namespace CalendarHeatingRoomPlanningUI
 		/// <summary>
 		/// Application Settings that the user can change/modify
 		/// </summary>
-		public ApplicationSettings Settings { get; set; }
+		public ApplicationSettings Settings 
+		{
+			get
+            {
+				if( !_already_load)
+                {
+					Load();
+					_already_load = true;
+				}
+				return _settings;
+            }
+			set
+            {
+				_settings = value;
+				Notify();
+            }
+		}
+		private ApplicationSettings _settings;
+		private Boolean _already_load;
 
 		private SettingsManager()
 		{
+			_already_load = false;
 			Subscribers = new List<SettingsSubscriber>();
+			_settings = new ApplicationSettings();
 		}
 
 		~SettingsManager()
