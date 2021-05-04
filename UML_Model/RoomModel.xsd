@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.exampleURI.com/Schema1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://www.exampleURI.com/Schema1">
+	<xs:simpleType name="RoomAlias">
+		<xs:annotation>
+			<xs:documentation>Single alias under which the room is detected when analyzing the calendar data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:element name="RoomModel" type="s1:RoomModel"/>
+	<xs:complexType name="RoomModel">
+		<xs:annotation>
+			<xs:documentation>Root of the room model.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RoomData" type="s1:Rooms" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Link to the list of rooms.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Rooms" type="s1:Rooms"/>
+	<xs:complexType name="Rooms">
+		<xs:annotation>
+			<xs:documentation>List of available rooms.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Rooms" type="s1:SingleRoom" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of the rooms.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SingleRoom" type="s1:SingleRoom"/>
+	<xs:complexType name="SingleRoom">
+		<xs:annotation>
+			<xs:documentation>Specification of a room</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Aliases" type="s1:RoomAlias" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of room aliases used to detect the rooms when analyzing the calendar data.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ID" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Name of the </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

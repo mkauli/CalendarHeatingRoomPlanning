@@ -11,8 +11,11 @@ namespace CalendarHeatingRoomPlanningUI
 {
     public class Program
     {
+        static public HeatingCalculation _heatingCalculation;
+
         public static void Main(string[] args)
         {
+            _heatingCalculation = new HeatingCalculation();
             CreateHostBuilder(args).Build().Run();
         }
 
