@@ -11,6 +11,9 @@
 	</xs:complexType>
 	<xs:element name="CalendarProperties" type="s1:CalendarProperties"/>
 	<xs:complexType name="CalendarProperties">
+		<xs:annotation>
+			<xs:documentation>The settings information for the calendar data fetching.</xs:documentation>
+		</xs:annotation>
 		<xs:sequence/>
 		<xs:attribute name="ICalUrl" use="optional" type="xs:string">
 			<xs:annotation>

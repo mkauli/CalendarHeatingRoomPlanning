@@ -61,6 +61,10 @@ namespace CalendarHeatingRoomPlanningUI
             }
 		}
 		private ApplicationSettings _settings;
+
+		/// <summary>
+		/// False, the settings data is not already load.
+		/// </summary>
 		private Boolean _already_load;
 
 		private SettingsManager()
