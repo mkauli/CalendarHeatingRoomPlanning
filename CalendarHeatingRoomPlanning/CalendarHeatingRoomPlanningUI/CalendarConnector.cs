@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using CalendarHeatingRoomPlanning;
 
 namespace CalendarHeatingRoomPlanningUI
 {
@@ -41,16 +42,18 @@ namespace CalendarHeatingRoomPlanningUI
         /// </summary>
         private List<CalendarSubscriber> Subscribers { get; set; }
 
-        /// <summary>
-        /// Temporary used data
-        /// ToDo: can be removed in production version
-        /// </summary>
-        public List<string> Data { get; set; }
+        public CalendarDataModel Data 
+        {
+            get { return _data; }
+            set { _data = value;  }
+        }
+        private CalendarDataModel _data;
 
         private CalendarConnector()
         {
             Subscribers = new List<CalendarSubscriber>();
-            Data = new List<string>();
+            _data = new CalendarDataModel();
+            _data.EventData = new List<SingleEvent>();
 
             SettingsManager.Instance.Attach(this);
             _ical_url = SettingsManager.Instance.Settings.Calendar.ICalUrl;
@@ -147,17 +150,74 @@ namespace CalendarHeatingRoomPlanningUI
                     // let parse data from ical calendar            
                     Calendar = Ical.Net.Calendar.Load(iCalDataNoComments);
 
-                    foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Calendar.Children)
-                    {
-                        Data.Add("test");
-                    }
+                    //foreach (ical.net.calendarcomponents.calendarevent cal in calendar.children)
+                    //{
+                    //    data.add("test");
+                    //}
                 }
+
+                // process new data
+                ConvertICalDataToDataModel();
 
                 // publish new data
                 Notify();
             }
             finally
             {
+            }
+        }
+
+        /// <summary>
+        /// Uses the iCal calendar event info of the property Calendar and transfers it to the CalendarDataModel.
+        /// </summary>
+        private void ConvertICalDataToDataModel()
+        {
+            _data.EventData.Clear();
+
+            if((Calendar == null) || (Calendar.Children.Count == 0))
+            {
+                // no calendar event in iCal found
+                return;
+            }
+
+            // process found iCal events
+            foreach(Ical.Net.CalendarComponents.CalendarEvent calEvent in Calendar.Children)
+            {
+                if (!calEvent.IsActive) continue;
+                SingleEvent singleEvent = new SingleEvent();
+                // process dates
+                singleEvent.DayEvent = false;
+                singleEvent.DayEventSpecified = true;
+                if (calEvent.IsAllDay)
+                {
+                    singleEvent.DayEvent = true;
+                    singleEvent.Start = calEvent.Start.Date;
+                    // one-day AllDays event need to be corrected
+                    if(calEvent.Duration.TotalDays == -1)
+                    {
+                        // correct bug that one-day AllDay events the stop date is one day before start date.
+                        singleEvent.Stop = calEvent.End.Date;
+                        singleEvent.Stop = singleEvent.Stop.AddDays(1);
+                    }
+                    if (calEvent.Duration.TotalDays > 0)
+                    {
+                        // correct bug that multiple-day AllDay events the stop date is one day after start date.
+                        singleEvent.Stop = calEvent.End.Date;
+                        singleEvent.Stop = singleEvent.Stop.AddDays(-1);
+                    }
+                }
+                else
+                {
+                    singleEvent.Start = calEvent.Start.Value;
+                    singleEvent.Stop = calEvent.End.Value;
+                }
+                // process description
+                singleEvent.Description = calEvent.Summary;
+                // process specified fields
+                singleEvent.StartSpecified = true;
+                singleEvent.StopSpecified = true;
+
+                Data.EventData.Add(singleEvent);
             }
         }
     }

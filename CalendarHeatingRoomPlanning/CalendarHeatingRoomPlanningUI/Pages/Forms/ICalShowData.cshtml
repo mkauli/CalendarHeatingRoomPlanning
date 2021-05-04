@@ -12,8 +12,25 @@
             <td>#</td>
             <td>Start</td>
             <td>Stop</td>
+            <td>All-Day</td>
             <td>Text</td>
         </tr>
+        @if ((Model.Data != null) && (Model.Data.EventData.Count > 0))
+        {
+            @foreach (CalendarHeatingRoomPlanning.SingleEvent singleEvent in Model.Data.EventData)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@singleEvent.Start.ToString()</td>
+                    <td>@singleEvent.Stop.ToString()</td>
+                    <td>@singleEvent.DayEvent.ToString()</td>
+                    <td>@singleEvent.Description</td>
+                </tr>
+                counter++;
+            }
+        }
+
+        <!--
         @if ((Model.Calendar != null) && (Model.Calendar.Children.Count > 0))
         {
             @foreach (Ical.Net.CalendarComponents.CalendarEvent cal in Model.Calendar.Children)
@@ -27,5 +44,6 @@
                 counter++;
             }
         }
+    -->
     </tbody>
 </table>

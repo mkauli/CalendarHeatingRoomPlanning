@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.exampleURI.com/Schema1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://www.exampleURI.com/Schema1">
+	<xs:element name="CalendarDataModel" type="s1:CalendarDataModel"/>
+	<xs:complexType name="CalendarDataModel">
+		<xs:sequence>
+			<xs:element name="EventData" type="s1:Events" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Events" type="s1:Events"/>
+	<xs:complexType name="Events">
+		<xs:annotation>
+			<xs:documentation>List of calendar event items.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Events" type="s1:SingleEvent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SingleEvent" type="s1:SingleEvent"/>
+	<xs:complexType name="SingleEvent">
+		<xs:annotation>
+			<xs:documentation>A single calendar event.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+		<xs:attribute name="DayEvent" use="optional" fixed="false" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>True when the event is a full day event.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Description" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The description of the calendar event.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Start" use="optional" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>Start date &amp; time of the event.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Stop" use="optional" type="xs:dateTime">
+			<xs:annotation>
+				<xs:documentation>Stop date &amp; time of the event.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

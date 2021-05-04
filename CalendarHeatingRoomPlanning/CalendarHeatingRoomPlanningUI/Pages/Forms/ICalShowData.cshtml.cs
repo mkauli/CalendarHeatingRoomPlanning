@@ -21,6 +21,16 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
         }
 
         /// <summary>
+        /// Destination of all calendar data processed by the CalendarConnector
+        /// </summary>
+        [BindProperty]
+        public CalendarDataModel Data
+        {
+            get { return CalendarConnector.Instance.Data; }
+            set { }
+        }
+
+        /// <summary>
         /// Constructor of the class - initialized properties.
         /// </summary>
         public ICalShowDataModel()
