@@ -1,0 +1,11 @@
+[Unit]
+Description=Calendar WebPage
+
+[Service]
+User=root
+WorkingDirectory=<<<your path to executable>>>
+ExecStart=<<<your path to executable>>>/CalendarHeatingRoomPlanningUI
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
