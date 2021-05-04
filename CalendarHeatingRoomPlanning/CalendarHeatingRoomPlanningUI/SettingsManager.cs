@@ -65,8 +65,9 @@ namespace CalendarHeatingRoomPlanningUI
 
 		private SettingsManager()
 		{
-			_already_load = false;
 			Subscribers = new List<SettingsSubscriber>();
+
+			_already_load = false;
 			_settings = new ApplicationSettings();
 			_settings.Calendar = new CalendarProperties();
 			_settings.Calendar.ICalUrl = "";
@@ -128,7 +129,7 @@ namespace CalendarHeatingRoomPlanningUI
 				{
 					System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(ApplicationSettings));
 					reader = new System.IO.StreamReader(SettingsFileName);
-					Settings = serializer.Deserialize(reader) as ApplicationSettings;
+					_settings = serializer.Deserialize(reader) as ApplicationSettings;
 				}
 				finally
 				{
@@ -150,7 +151,7 @@ namespace CalendarHeatingRoomPlanningUI
 			{
 				System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(ApplicationSettings));
 				writer = new System.IO.StreamWriter(SettingsFileName);
-				serializer.Serialize(writer, Settings);
+				serializer.Serialize(writer, _settings);
 			}
 			finally
 			{
