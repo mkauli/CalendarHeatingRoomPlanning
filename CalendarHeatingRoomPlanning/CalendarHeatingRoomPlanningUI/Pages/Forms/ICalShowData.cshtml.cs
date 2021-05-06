@@ -37,9 +37,15 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
         {
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if(!Authentification.Instance.IsAuthentificated(HttpContext))
+            {
+                return new RedirectToPageResult("/Index");
+            }
+
             CalendarConnector.Instance.FetchCalendarData();
+            return Page();
         }
     }
 }

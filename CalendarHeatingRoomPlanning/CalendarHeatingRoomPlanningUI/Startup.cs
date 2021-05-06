@@ -35,9 +35,17 @@ namespace CalendarHeatingRoomPlanningUI
                 cookieOptions.LoginPath = "/";
             });
 
+            services.AddHttpContextAccessor(); // to get the IHttpContextAccessor 
+
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+            services.AddMemoryCache();
+
             services.AddMvc().AddRazorPagesOptions(options => {
                 options.Conventions.AuthorizeFolder("/admin");
             }).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +64,7 @@ namespace CalendarHeatingRoomPlanningUI
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
@@ -65,6 +74,7 @@ namespace CalendarHeatingRoomPlanningUI
             {
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }

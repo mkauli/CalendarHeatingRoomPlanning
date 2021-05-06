@@ -35,8 +35,15 @@ namespace CalendarHeatingRoomPlanningUI.Pages
 
         public async Task<IActionResult> OnPost()
         {
+            if(Authentification.Instance.IsAuthentificated(HttpContext))
+            {
+                Authentification.Instance.SetLoginStatus(HttpContext, false);
+                return Page();
+            }
+
             var user = _configuration.GetSection("SiteUser").Get<SiteUser>();
 
+            Authentification.Instance.SetLoginStatus(HttpContext, false);
             if (UserName == user.UserName)
             {
                 var passwordHasher = new Microsoft.AspNetCore.Identity.PasswordHasher<string>();
@@ -48,7 +55,8 @@ namespace CalendarHeatingRoomPlanningUI.Pages
                     };
                     var claimsIdentity = new System.Security.Claims.ClaimsIdentity(claims, Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme, new System.Security.Claims.ClaimsPrincipal(claimsIdentity));
-                    return RedirectToPage("Privacy"); 
+                    Authentification.Instance.SetLoginStatus(HttpContext, true);
+                    return RedirectToPage("Index"); 
                 }
             }
             Message = "Invalid attempt";

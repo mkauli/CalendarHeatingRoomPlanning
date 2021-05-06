@@ -23,8 +23,14 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
             set { SettingsManager.Instance.Settings = value;  }
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (!Authentification.Instance.IsAuthentificated(HttpContext))
+            {
+                return new RedirectToPageResult("/Index");
+            }
+
+            return Page();
         }
 
         public IActionResult OnPost()
