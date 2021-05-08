@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("0.2.6:1", "", "Settings", "EARoot/EA2/EA6/EA60.htm", "178.png", "7", "0", "", "Component diagram0","{7BDD5589-1DF9-4e0f-B1C2-CF0302CB7813}");
+tocTab[tocTab.length] = new Array("0.2.6:2", "", "Calendar-Settings", "EARoot/EA2/EA6/EA64.htm", "5.png", "E15", "0", "", "Class0","{BC555382-E0CD-4512-AF72-5F50D3FC4059}");
+tocTab[tocTab.length] = new Array("0.2.6:3", "", "Heating-KNX-Mapping", "EARoot/EA2/EA6/EA65.htm", "5.png", "E16", "0", "", "Class0","{4FEF9A2F-6F4E-4701-93A8-7F49C9B61143}");
+tocTab[tocTab.length] = new Array("0.2.6:4", "", "Settings-Manager", "EARoot/EA2/EA6/EA66.htm", "10.png", "E8", "0", "", "Component0","{C3E7293D-18A5-4590-A897-FB68C9B671D1}");
+tocTab[tocTab.length] = new Array("0.2.6:5", "", "Settings-Publisher", "EARoot/EA2/EA6/EA67.htm", "8.png", "E43", "0", "", "Interface0","{B5537A0E-15B7-4489-864C-7E292BD61DCC}");
+tocTab[tocTab.length] = new Array("0.2.6:6", "", "Settings-Subscriber", "EARoot/EA2/EA6/EA68.htm", "8.png", "E44", "0", "", "Interface0","{8AEF8682-62FC-48a1-B7F8-1E9E012893B2}");
+tocTab[tocTab.length] = new Array("0.2.6:7", "", "System-Settings", "EARoot/EA2/EA6/EA69.htm", "5.png", "E17", "0", "", "Class0","{BFD8D844-4F0F-4cc7-99A7-5087FD8314F9}");
