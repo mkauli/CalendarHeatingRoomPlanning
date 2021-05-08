@@ -1,3 +1,0 @@
-tocTab[tocTab.length] = new Array("0.3.3:1", "", "Settings", "EARoot/EA3/EA3/EA92.htm", "188.png", "6", "0", "", "Custom diagram0","{5850A647-1422-4f17-BF1C-9A9E2C668628}");
-tocTab[tocTab.length] = new Array("0.3.3:2", "", "«XSDcomplexType» ApplicationSettings", "EARoot/EA3/EA3/EA96.htm", "5.png", "E41", "0", "", "Class0","{3FC2084F-C421-4f5d-BE03-575390CD671A}");
-tocTab[tocTab.length] = new Array("0.3.3:3", "", "«XSDcomplexType» CalendarProperties", "EARoot/EA3/EA3/EA97.htm", "5.png", "E42", "0", "", "Class0","{500E847A-18AF-45aa-B929-1DBD08256688}");

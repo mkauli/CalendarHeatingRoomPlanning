@@ -1,4 +1,0 @@
-tocTab[tocTab.length] = new Array("0.3:1", "", "XML-Schema [Overview]", "EARoot/EA3/EA70.htm", "188.png", "5", "0", "", "Custom diagram0","{9A02CA20-C9C3-419e-B625-7A3F09B6CC62}");
-tocTab[tocTab.length] = new Array("0.3.1", "1", "«XSDschema» CalendarDataModel", "EARoot/EA3/EA1/EA79.htm", "4.png", "", "", "{21A22146-6B8D-4961-B6E0-A465A36DAE3A}", "Package");
-tocTab[tocTab.length] = new Array("0.3.2", "1", "«XSDschema» RoomModel", "EARoot/EA3/EA2/EA86.htm", "4.png", "", "", "{3B473E8D-328D-482d-8649-17EDD9A392A7}", "Package");
-tocTab[tocTab.length] = new Array("0.3.3", "1", "«XSDschema» Settings", "EARoot/EA3/EA3/EA94.htm", "4.png", "", "", "{B83CBC48-A518-4698-A0C2-B72E82F92C6F}", "Package");

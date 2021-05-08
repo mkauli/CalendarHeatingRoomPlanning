@@ -1,4 +1,0 @@
-tocTab[tocTab.length] = new Array("0.3.1:1", "", "CalendarDataModel", "EARoot/EA3/EA1/EA77.htm", "188.png", "9", "0", "", "Custom diagram0","{65A03F19-5F29-4667-92F3-EADD24E285C3}");
-tocTab[tocTab.length] = new Array("0.3.1:2", "", "«XSDcomplexType» CalendarDataModel", "EARoot/EA3/EA1/EA81.htm", "5.png", "E56", "0", "", "Class0","{02CFB3B9-F3E2-4318-A6D8-A2A27BE83813}");
-tocTab[tocTab.length] = new Array("0.3.1:3", "", "«XSDcomplexType» Events", "EARoot/EA3/EA1/EA82.htm", "5.png", "E54", "0", "", "Class0","{73675CF0-AEC4-41c3-ABC3-84C0FCC0E177}");
-tocTab[tocTab.length] = new Array("0.3.1:4", "", "«XSDcomplexType» SingleEvent", "EARoot/EA3/EA1/EA83.htm", "5.png", "E55", "0", "", "Class0","{8E650A9B-F49E-43d5-B375-223FB621D238}");

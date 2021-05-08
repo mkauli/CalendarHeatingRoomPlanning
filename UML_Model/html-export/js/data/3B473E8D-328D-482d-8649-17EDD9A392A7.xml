@@ -1,5 +1,0 @@
-tocTab[tocTab.length] = new Array("0.3.2:1", "", "RoomModel", "EARoot/EA3/EA2/EA84.htm", "188.png", "11", "0", "", "Custom diagram0","{17BCF34A-E0EF-4d6d-89F4-51521807E6A5}");
-tocTab[tocTab.length] = new Array("0.3.2:2", "", "«XSDsimpleType» RoomAlias", "EARoot/EA3/EA2/EA88.htm", "5.png", "E64", "0", "", "Class0","{8F64D1F9-77FB-4508-AA2E-75986C6197A3}");
-tocTab[tocTab.length] = new Array("0.3.2:3", "", "«XSDcomplexType» RoomModel", "EARoot/EA3/EA2/EA89.htm", "5.png", "E61", "0", "", "Class0","{195877C3-CE21-4562-855D-A60C9C1B2B72}");
-tocTab[tocTab.length] = new Array("0.3.2:4", "", "«XSDcomplexType» Rooms", "EARoot/EA3/EA2/EA90.htm", "5.png", "E62", "0", "", "Class0","{C4678B3F-225F-42cc-891D-DBBE5A6EF401}");
-tocTab[tocTab.length] = new Array("0.3.2:5", "", "«XSDcomplexType» SingleRoom", "EARoot/EA3/EA2/EA91.htm", "5.png", "E63", "0", "", "Class0","{77625010-56F5-4be9-B99F-10884415A4D8}");

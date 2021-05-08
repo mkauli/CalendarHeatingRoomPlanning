@@ -1,4 +1,0 @@
-tocTab[tocTab.length] = new Array("0.2.4:1", "", "Output", "EARoot/EA2/EA4/EA47.htm", "178.png", "8", "0", "", "Component diagram0","{47E01384-01B8-460b-9E14-C4E61F62AE19}");
-tocTab[tocTab.length] = new Array("0.2.4:2", "", "Heating Data Router", "EARoot/EA2/EA4/EA51.htm", "10.png", "E18", "0", "", "Component0","{3E0B6CA9-B372-47fd-BFD5-E8F7CEAC0D01}");
-tocTab[tocTab.length] = new Array("0.2.4:3", "", "Output-Publisher", "EARoot/EA2/EA4/EA52.htm", "8.png", "E20", "0", "", "Interface0","{6ABD266F-5107-4081-90D3-36A52A6518D0}");
-tocTab[tocTab.length] = new Array("0.2.4:4", "", "Output-Subscriber", "EARoot/EA2/EA4/EA53.htm", "8.png", "E19", "0", "", "Interface0","{8AAA193E-7AC2-4491-9C39-D541FC60DCB1}");
