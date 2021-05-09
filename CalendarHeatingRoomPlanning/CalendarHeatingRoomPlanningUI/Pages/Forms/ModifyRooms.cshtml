@@ -1,0 +1,27 @@
+﻿@page
+@model CalendarHeatingRoomPlanningUI.Pages.Forms.ModifyRoomsModel
+@{
+    ViewData["Title"] = " Specified Rooms";
+}
+
+<h1>Specified Rooms</h1>
+@{ int counter = 1; }
+<table style="width:100%">
+    <tbody>
+        <tr>
+            <td>#</td>
+            <td>Id</td>
+        </tr>
+        @if ((Model.Rooms != null) && (Model.Rooms.RoomData.Count > 0))
+        {
+            @foreach (CalendarHeatingRoomPlanning.SingleRoom singleRoom in Model.Rooms.RoomData)
+            {
+                <tr>
+                    <td>@counter</td>
+                    <td>@singleRoom.ID</td>
+                </tr>
+                counter++;
+            }
+        }
+    </tbody>
+</table>
