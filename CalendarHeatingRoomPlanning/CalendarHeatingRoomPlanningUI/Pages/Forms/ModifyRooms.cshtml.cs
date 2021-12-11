@@ -31,5 +31,14 @@ namespace CalendarHeatingRoomPlanningUI.Pages.Forms
 
             return Page();
         }
+        //public IActionResult OnPost()
+        //{
+        //    if (ModelState.IsValid == false)
+        //    {
+        //        return Page();
+        //    }
+
+        //    return RedirectToPage("/Index");
+        //}
     }
 }
